@@ -1,0 +1,29 @@
+{
+  "name": "writable-wrapper",
+  "version": "0.0.0",
+  "description": "Writable stream with a single data target",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meyfa/writable-wrapper.git"
+  },
+  "keywords": [
+    "stream",
+    "streams",
+    "writable",
+    "wrapper"
+  ],
+  "author": "Fabian Meyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meyfa/writable-wrapper/issues"
+  },
+  "homepage": "https://github.com/meyfa/writable-wrapper",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
