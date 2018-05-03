@@ -40,13 +40,14 @@ const fs = require("fs");
 const util = require("util");
 const WritableWrapper = require("writable-wrapper");
 
-util.inherits(MyWritable, WritableWrapper);
-
 // Class for new items. You can write data, and when done, store the item.
 // Not calling 'store' dismisses the item.
 function NewlyCreatedItem(target) {
     WritableWrapper.call(this, target);
 }
+
+// make NewlyCreatedItem a subclass of WritableWrapper
+util.inherits(NewlyCreatedItem, WritableWrapper);
 
 NewlyCreatedItem.prototype.store = function () {
     this.end(function () {
