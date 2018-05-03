@@ -1,1 +1,121 @@
 "use strict";
+
+const chai = require("chai");
+const expect = chai.expect;
+
+const PassThrough = require("stream").PassThrough;
+
+const WritableWrapper = require("../index.js");
+
+describe("WritableWrapper", function () {
+
+    it("constructs when invoked as a function", function () {
+        expect(WritableWrapper(new PassThrough()))
+            .to.be.instanceOf(WritableWrapper);
+    });
+
+    describe("#write()", function () {
+
+        it("writes data to target", function (done) {
+            const target = new PassThrough();
+            const obj = new WritableWrapper(target);
+            obj.write("hello world", "utf8");
+            target.on("data", function (chunk) {
+                const expected = Buffer.from("hello world", "utf8");
+                expect(chunk).to.satisfy((c) => expected.equals(c));
+                done();
+            });
+        });
+
+        it("emits one 'error' event on failure", function (done) {
+            const target = new PassThrough({
+                write: function (chunk, encoding, callback) {
+                    callback(new Error("oops!"));
+                },
+            });
+            const obj = new WritableWrapper(target);
+            obj.on("error", function (err) {
+                expect(err.message).to.equal("oops!");
+                done();
+            });
+            obj.write("hello world", "utf8");
+        });
+
+    });
+
+    describe("#end()", function () {
+
+        it("writes data to target", function (done) {
+            const target = new PassThrough();
+            const obj = new WritableWrapper(target);
+            obj.end("hello world", "utf8");
+            target.on("data", function (chunk) {
+                const expected = Buffer.from("hello world", "utf8");
+                expect(chunk).to.satisfy((c) => expected.equals(c));
+                done();
+            });
+        });
+
+        it("ends the target", function (done) {
+            const target = new PassThrough();
+            const obj = new WritableWrapper(target);
+            target.on("finish", done);
+            obj.end();
+        });
+
+        it("ends the target before emitting 'finish'", function (done) {
+            const target = new PassThrough();
+            let targetFinish = false;
+            const obj = new WritableWrapper(target);
+            target.on("finish", function () {
+                targetFinish = true;
+            });
+            obj.on("finish", function () {
+                expect(targetFinish).to.be.true;
+                done();
+            });
+            obj.end();
+        });
+
+        it("invokes the callback when done", function (done) {
+            const target = new PassThrough();
+            let targetFinish = false;
+            const obj = new WritableWrapper(target);
+            target.on("finish", function () {
+                targetFinish = true;
+            });
+            obj.end(function () {
+                expect(targetFinish).to.be.true;
+                done();
+            });
+        });
+
+        it("emits one 'error' event on write failure", function (done) {
+            const target = new PassThrough({
+                write: function (chunk, encoding, callback) {
+                    callback(new Error("oops!"));
+                },
+            });
+            const obj = new WritableWrapper(target);
+            obj.on("error", function (err) {
+                expect(err.message).to.equal("oops!");
+                done();
+            });
+            obj.end("hello world", "utf8");
+        });
+
+        it("still emits 'finish' on write failure", function (done) {
+            const target = new PassThrough({
+                write: function (chunk, encoding, callback) {
+                    callback(new Error("oops!"));
+                },
+            });
+            const obj = new WritableWrapper(target);
+            obj.on("error", () => {});
+            obj.on("finish", () => done());
+            obj.end("hello world", "utf8");
+        });
+
+    });
+
+});
