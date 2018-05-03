@@ -64,3 +64,16 @@ WritableWrapper.prototype.end = function (chunk, encoding, callback) {
         Writable.prototype.end.call(this, cb);
     });
 };
+
+/**
+ * @override
+ */
+WritableWrapper.prototype.destroy = function (err) {
+    // destroy() was added in Node v8.0.0, so we have to do some checks
+    if (typeof this._target.destroy === "function") {
+        this._target.destroy(err);
+    }
+    if (typeof Writable.prototype.destroy === "function") {
+        Writable.prototype.destroy.call(this, err);
+    }
+};

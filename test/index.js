@@ -118,4 +118,27 @@ describe("WritableWrapper", function () {
 
     });
 
+    describe("#destroy()", function () {
+
+        it("should destroy the target", function (done) {
+            const target = new PassThrough();
+            target.destroy = function (err) {
+                expect(err.message).to.equal("oops!");
+                done();
+            };
+            const obj = new WritableWrapper(target);
+            obj.destroy(new Error("oops!"));
+            obj.on("error", () => {});
+        });
+
+        it("should not fail for missing destroy() on target", function () {
+            const target = new PassThrough();
+            target.destroy = undefined;
+            const obj = new WritableWrapper(target);
+            obj.destroy();
+            obj.on("error", () => {});
+        });
+
+    });
+
 });
