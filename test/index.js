@@ -90,6 +90,12 @@ describe("WritableWrapper", function () {
             });
         });
 
+        it("ignores missing encoding argument", function (done) {
+            const target = new PassThrough();
+            const obj = new WritableWrapper(target);
+            obj.end("some data", done);
+        });
+
         it("emits one 'error' event on write failure", function (done) {
             const target = new PassThrough({
                 write: function (chunk, encoding, callback) {
