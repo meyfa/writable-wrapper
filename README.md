@@ -1,6 +1,6 @@
 # writable-wrapper
 
-[![Build Status](https://travis-ci.org/meyfa/writable-wrapper.svg?branch=master)](https://travis-ci.org/meyfa/writable-wrapper)
+[![Build Status](https://travis-ci.com/meyfa/writable-wrapper.svg?branch=master)](https://travis-ci.com/meyfa/writable-wrapper)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1c1c78851c5a0ccda78b/test_coverage)](https://codeclimate.com/github/meyfa/writable-wrapper/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1c1c78851c5a0ccda78b/maintainability)](https://codeclimate.com/github/meyfa/writable-wrapper/maintainability)
 
