@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/meyfa/writable-wrapper",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.1.1",
-    "nyc": "^11.8.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
   }
 }

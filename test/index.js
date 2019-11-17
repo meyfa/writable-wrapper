@@ -110,18 +110,6 @@ describe("WritableWrapper", function () {
             obj.end("hello world", "utf8");
         });
 
-        it("still emits 'finish' on write failure", function (done) {
-            const target = new PassThrough({
-                write: function (chunk, encoding, callback) {
-                    callback(new Error("oops!"));
-                },
-            });
-            const obj = new WritableWrapper(target);
-            obj.on("error", () => {});
-            obj.on("finish", () => done());
-            obj.end("hello world", "utf8");
-        });
-
     });
 
     describe("#destroy()", function () {
