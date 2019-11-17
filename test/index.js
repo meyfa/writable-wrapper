@@ -9,11 +9,6 @@ const WritableWrapper = require("../index.js");
 
 describe("WritableWrapper", function () {
 
-    it("constructs when invoked as a function", function () {
-        expect(WritableWrapper(new PassThrough()))
-            .to.be.instanceOf(WritableWrapper);
-    });
-
     describe("#write()", function () {
 
         it("writes data to target", function (done) {

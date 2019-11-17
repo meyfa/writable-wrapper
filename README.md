@@ -18,7 +18,7 @@ always be attached.
 ## Install
 
 ```
-npm install --save writable-wrapper
+npm i writable-wrapper
 ```
 
 ## Usage
@@ -38,23 +38,21 @@ Of course, this functionality is really only useful for custom object types:
 
 ```javascript
 const fs = require("fs");
-const util = require("util");
 const WritableWrapper = require("writable-wrapper");
 
 // Class for new items. You can write data, and when done, store the item.
 // Not calling 'store' dismisses the item.
-function NewlyCreatedItem(target) {
-    WritableWrapper.call(this, target);
+class NewlyCreatedItem extends WritableWrapper {
+    constructor (target) {
+        super(target);
+    }
+
+    store () {
+        this.end(function () {
+            // store this item
+        });
+    }
 }
-
-// make NewlyCreatedItem a subclass of WritableWrapper
-util.inherits(NewlyCreatedItem, WritableWrapper);
-
-NewlyCreatedItem.prototype.store = function () {
-    this.end(function () {
-        // store this item
-    });
-};
 
 // ...
 
