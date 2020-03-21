@@ -26,10 +26,10 @@ npm i writable-wrapper
 ### Simple Example
 
 ```javascript
-const fs = require("fs");
-const WritableWrapper = require("writable-wrapper");
+const fs = require('fs')
+const WritableWrapper = require('writable-wrapper')
 
-const wrapper = new WritableWrapper(fs.createWriteStream("file.txt"));
+const wrapper = new WritableWrapper(fs.createWriteStream('file.txt'))
 ```
 
 ### Custom Class Example
@@ -37,26 +37,22 @@ const wrapper = new WritableWrapper(fs.createWriteStream("file.txt"));
 Of course, this functionality is really only useful for custom object types:
 
 ```javascript
-const fs = require("fs");
-const WritableWrapper = require("writable-wrapper");
+const fs = require('fs')
+const WritableWrapper = require('writable-wrapper')
 
 // Class for new items. You can write data, and when done, store the item.
 // Not calling 'store' dismisses the item.
 class NewlyCreatedItem extends WritableWrapper {
-    constructor (target) {
-        super(target);
-    }
-
-    store () {
-        this.end(function () {
-            // store this item
-        });
-    }
+  store () {
+    this.end(function () {
+      // store this item
+    })
+  }
 }
 
 // ...
 
-const item = new NewlyCreatedItem(fs.createWriteStream("file.txt"));
-item.write("hello world", "utf8");
-item.store();
+const item = new NewlyCreatedItem(fs.createWriteStream('file.txt'))
+item.write('hello world', 'utf8')
+item.store()
 ```

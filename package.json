@@ -4,6 +4,8 @@
   "description": "Writable stream with a single data target",
   "main": "index.js",
   "scripts": {
+    "lint": "standard",
+    "lint-fix": "standard --fix",
     "test": "mocha --recursive",
     "coverage": "nyc --reporter=lcov mocha --recursive"
   },
@@ -28,7 +30,8 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1"
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.3"
   }
 }
