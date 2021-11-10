@@ -1,13 +1,7 @@
-/* eslint-disable   no-unused-expressions */
-/* global           describe, it */
-'use strict'
+import { expect } from 'chai'
+import { PassThrough } from 'stream'
 
-const chai = require('chai')
-const expect = chai.expect
-
-const PassThrough = require('stream').PassThrough
-
-const WritableWrapper = require('../index.js')
+import WritableWrapper from '../index'
 
 describe('WritableWrapper', function () {
   describe('#write()', function () {
@@ -17,7 +11,7 @@ describe('WritableWrapper', function () {
       obj.write('hello world', 'utf8')
       target.on('data', function (chunk) {
         const expected = Buffer.from('hello world', 'utf8')
-        expect(chunk).to.satisfy((c) => expected.equals(c))
+        expect(chunk).to.satisfy((c: Buffer) => expected.equals(c))
         done()
       })
     })
@@ -44,7 +38,7 @@ describe('WritableWrapper', function () {
       obj.end('hello world', 'utf8')
       target.on('data', function (chunk) {
         const expected = Buffer.from('hello world', 'utf8')
-        expect(chunk).to.satisfy((c) => expected.equals(c))
+        expect(chunk).to.satisfy((c: Buffer) => expected.equals(c))
         done()
       })
     })
@@ -108,7 +102,7 @@ describe('WritableWrapper', function () {
     it('should destroy the target', function (done) {
       const target = new PassThrough()
       target.destroy = function (err) {
-        expect(err.message).to.equal('oops!')
+        expect(err?.message).to.equal('oops!')
         done()
       }
       const obj = new WritableWrapper(target)
