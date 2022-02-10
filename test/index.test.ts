@@ -96,6 +96,12 @@ describe('WritableWrapper', function () {
       })
       obj.end('hello world', 'utf8')
     })
+
+    it('returns this', function () {
+      const target = new PassThrough()
+      const obj = new WritableWrapper(target)
+      expect(obj.end('hello world', 'utf8')).to.equal(obj)
+    })
   })
 
   describe('#destroy()', function () {
@@ -104,6 +110,7 @@ describe('WritableWrapper', function () {
       target.destroy = function (err) {
         expect(err?.message).to.equal('oops!')
         done()
+        return target
       }
       const obj = new WritableWrapper(target)
       obj.destroy(new Error('oops!'))
@@ -117,6 +124,12 @@ describe('WritableWrapper', function () {
       const obj = new WritableWrapper(target)
       obj.destroy()
       obj.on('error', () => {})
+    })
+
+    it('returns this', function () {
+      const target = new PassThrough()
+      const obj = new WritableWrapper(target)
+      expect(obj.destroy()).to.equal(obj)
     })
   })
 })

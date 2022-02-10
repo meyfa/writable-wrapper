@@ -28,7 +28,7 @@ export default class WritableWrapper extends Writable {
     })
   }
 
-  override end (chunk?: any, encoding?: any, callback?: any): void {
+  override end (chunk?: any, encoding?: any, callback?: any): this {
     // Detect which arguments were really given
     let ch = chunk; let enc = encoding; let cb = callback
     if (typeof chunk === 'function') {
@@ -47,12 +47,14 @@ export default class WritableWrapper extends Writable {
       // Now end this stream
       super.end(cb)
     })
+    return this
   }
 
-  override destroy (err?: Error): void {
+  override destroy (err?: Error): this {
     if (typeof this._target.destroy === 'function') {
       this._target.destroy(err)
     }
     super.destroy(err)
+    return this
   }
 }
