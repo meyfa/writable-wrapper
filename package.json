@@ -1,6 +1,6 @@
 {
   "name": "writable-wrapper",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Writable stream with a single data target",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
