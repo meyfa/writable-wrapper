@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { PassThrough } from 'stream'
 
-import WritableWrapper from '../index'
+import WritableWrapper from '../index.js'
 
 describe('WritableWrapper', function () {
   describe('#write()', function () {
