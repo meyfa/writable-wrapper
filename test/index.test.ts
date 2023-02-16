@@ -1,6 +1,5 @@
-import { expect } from 'chai'
+import assert from 'assert'
 import { PassThrough } from 'stream'
-
 import WritableWrapper from '../index.js'
 
 describe('WritableWrapper', function () {
@@ -11,7 +10,7 @@ describe('WritableWrapper', function () {
       obj.write('hello world', 'utf8')
       target.on('data', function (chunk) {
         const expected = Buffer.from('hello world', 'utf8')
-        expect(chunk).to.satisfy((c: Buffer) => expected.equals(c))
+        assert.ok(expected.equals(chunk))
         done()
       })
     })
@@ -24,7 +23,7 @@ describe('WritableWrapper', function () {
       })
       const obj = new WritableWrapper(target)
       obj.on('error', function (err) {
-        expect(err.message).to.equal('oops!')
+        assert.strictEqual(err.message, 'oops!')
         done()
       })
       obj.write('hello world', 'utf8')
@@ -38,7 +37,7 @@ describe('WritableWrapper', function () {
       obj.end('hello world', 'utf8')
       target.on('data', function (chunk) {
         const expected = Buffer.from('hello world', 'utf8')
-        expect(chunk).to.satisfy((c: Buffer) => expected.equals(c))
+        assert.ok(expected.equals(chunk))
         done()
       })
     })
@@ -58,7 +57,7 @@ describe('WritableWrapper', function () {
         targetFinish = true
       })
       obj.on('finish', function () {
-        expect(targetFinish).to.be.true
+        assert.ok(targetFinish)
         done()
       })
       obj.end()
@@ -72,7 +71,7 @@ describe('WritableWrapper', function () {
         targetFinish = true
       })
       obj.end(function () {
-        expect(targetFinish).to.be.true
+        assert.ok(targetFinish)
         done()
       })
     })
@@ -91,7 +90,7 @@ describe('WritableWrapper', function () {
       })
       const obj = new WritableWrapper(target)
       obj.on('error', function (err) {
-        expect(err.message).to.equal('oops!')
+        assert.strictEqual(err.message, 'oops!')
         done()
       })
       obj.end('hello world', 'utf8')
@@ -100,7 +99,7 @@ describe('WritableWrapper', function () {
     it('returns this', function () {
       const target = new PassThrough()
       const obj = new WritableWrapper(target)
-      expect(obj.end('hello world', 'utf8')).to.equal(obj)
+      assert.strictEqual(obj.end('hello world', 'utf8'), obj)
     })
   })
 
@@ -108,7 +107,7 @@ describe('WritableWrapper', function () {
     it('should destroy the target', function (done) {
       const target = new PassThrough()
       target.destroy = function (err) {
-        expect(err?.message).to.equal('oops!')
+        assert.strictEqual(err?.message, 'oops!')
         done()
         return target
       }
@@ -129,7 +128,7 @@ describe('WritableWrapper', function () {
     it('returns this', function () {
       const target = new PassThrough()
       const obj = new WritableWrapper(target)
-      expect(obj.destroy()).to.equal(obj)
+      assert.strictEqual(obj.destroy(), obj)
     })
   })
 })
