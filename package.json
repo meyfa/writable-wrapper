@@ -8,8 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "node -e \"fs.rmSync('./dist',{force:true,recursive:true})\" && tsc",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore .",
     "lint-fix": "tsc --noEmit && eslint --fix --ignore-path .gitignore .",
     "test": "mocha --require ts-node/register --recursive \"test/**/*.test.*\"",
@@ -33,16 +32,15 @@
   },
   "homepage": "https://github.com/meyfa/writable-wrapper",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=18.16.1"
   },
   "devDependencies": {
     "@meyfa/eslint-config": "3.0.1",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.18",
+    "@types/node": "18.16.19",
     "c8": "8.0.0",
     "eslint": "8.44.0",
     "mocha": "10.2.0",
-    "rimraf": "5.0.1",
     "ts-node": "10.9.1",
     "typescript": "5.0.4"
   }
