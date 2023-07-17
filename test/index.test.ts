@@ -118,7 +118,7 @@ describe('WritableWrapper', function () {
 
     it('should not fail for missing destroy() on target', function () {
       const target = new PassThrough()
-      // @ts-expect-error
+      // @ts-expect-error - Node.js types require destroy to be a function
       target.destroy = undefined
       const obj = new WritableWrapper(target)
       obj.destroy()
