@@ -2,6 +2,7 @@
   "name": "writable-wrapper",
   "version": "4.0.1",
   "description": "Writable stream with a single data target",
+  "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
