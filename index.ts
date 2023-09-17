@@ -1,4 +1,4 @@
-import { Writable } from 'stream'
+import { Writable } from 'node:stream'
 
 export default class WritableWrapper extends Writable {
   private readonly _target: Writable
