@@ -1,5 +1,5 @@
-import assert from 'assert'
-import { PassThrough } from 'stream'
+import assert from 'node:assert'
+import { PassThrough } from 'node:stream'
 import WritableWrapper from '../index.js'
 
 describe('WritableWrapper', function () {
