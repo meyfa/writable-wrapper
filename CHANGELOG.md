@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.2](https://github.com/meyfa/writable-wrapper/compare/v4.0.1...v4.0.2) (2023-09-17)
+
+
+### Bug Fixes
+
+* Explicitly set package.json "type" to "commonjs" ([#122](https://github.com/meyfa/writable-wrapper/issues/122)) ([8634cde](https://github.com/meyfa/writable-wrapper/commit/8634cde032cda123fc38117f554b07ac1ed99ce9))
+* Use 'node:' protocol in imports ([#123](https://github.com/meyfa/writable-wrapper/issues/123)) ([66efffa](https://github.com/meyfa/writable-wrapper/commit/66efffa2ddf4b8150d6693b0ebb2a843cbdb0cbc))
+
 ## [4.0.1](https://github.com/meyfa/writable-wrapper/compare/v4.0.0...v4.0.1) (2023-07-23)
 
 
