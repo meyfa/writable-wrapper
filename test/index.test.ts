@@ -15,7 +15,7 @@ describe('WritableWrapper', function () {
       })
     })
 
-    it("emits one 'error' event on failure", function (done) {
+    it('emits one "error" event on failure', function (done) {
       const target = new PassThrough({
         write: function (chunk, encoding, callback) {
           callback(new Error('oops!'))
@@ -49,7 +49,7 @@ describe('WritableWrapper', function () {
       obj.end()
     })
 
-    it("ends the target before emitting 'finish'", function (done) {
+    it('ends the target before emitting "finish"', function (done) {
       const target = new PassThrough()
       let targetFinish = false
       const obj = new WritableWrapper(target)
@@ -82,7 +82,7 @@ describe('WritableWrapper', function () {
       obj.end('some data', done)
     })
 
-    it("emits one 'error' event on write failure", function (done) {
+    it('emits one "error" event on write failure', function (done) {
       const target = new PassThrough({
         write: function (chunk, encoding, callback) {
           callback(new Error('oops!'))
