@@ -30,7 +30,9 @@ export default class WritableWrapper extends Writable {
 
   override end (chunk?: any, encoding?: any, callback?: any): this {
     // Detect which arguments were really given
-    let ch = chunk; let enc = encoding; let cb = callback
+    let ch = chunk
+    let enc = encoding
+    let cb = callback
     if (typeof chunk === 'function') {
       cb = chunk
       ch = enc = null
