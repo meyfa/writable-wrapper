@@ -1,8 +1,6 @@
 # writable-wrapper
 
 [![CI](https://github.com/meyfa/writable-wrapper/actions/workflows/main.yml/badge.svg)](https://github.com/meyfa/writable-wrapper/actions/workflows/main.yml)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/1c1c78851c5a0ccda78b/test_coverage)](https://codeclimate.com/github/meyfa/writable-wrapper/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1c1c78851c5a0ccda78b/maintainability)](https://codeclimate.com/github/meyfa/writable-wrapper/maintainability)
 
 This TypeScript library for Node.js offers a writable stream implementation that
 forwards all data to another `Writable`, the "target".
