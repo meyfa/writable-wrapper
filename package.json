@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/meyfa/writable-wrapper",
   "engines": {
-    "node": ">=18.16.1"
+    "node": ">=22.18.0"
   },
   "devDependencies": {
     "@meyfa/eslint-config": "8.0.1",
