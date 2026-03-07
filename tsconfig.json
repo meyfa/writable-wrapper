@@ -16,8 +16,5 @@
     "test",
     "dist",
     "node_modules"
-  ],
-  "ts-node": {
-    "experimentalResolver": true
-  }
+  ]
 }
