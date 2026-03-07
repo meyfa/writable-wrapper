@@ -2,9 +2,15 @@
   "name": "writable-wrapper",
   "version": "4.0.2",
   "description": "Writable stream with a single data target",
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -12,7 +18,7 @@
     "build": "node -e \"fs.rmSync('./dist',{force:true,recursive:true})\" && tsc",
     "lint": "tsc --noEmit && eslint .",
     "lint-fix": "tsc --noEmit && eslint --fix .",
-    "test": "mocha --require ts-node/register --recursive \"test/**/*.test.*\"",
+    "test": "mocha --loader ./node_modules/ts-node/esm.mjs --recursive \"test/**/*.test.*\"",
     "coverage": "c8 --reporter=lcov npm test",
     "prepack": "npm run build"
   },
