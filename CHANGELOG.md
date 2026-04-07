@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.0.0](https://github.com/meyfa/writable-wrapper/compare/v4.0.2...v5.0.0) (2026-04-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Convert to an ESM-only library ([#209](https://github.com/meyfa/writable-wrapper/issues/209))
+* Require Node.js 22.18.0 or later ([#207](https://github.com/meyfa/writable-wrapper/issues/207))
+
+### Miscellaneous Chores
+
+* Convert to an ESM-only library ([#209](https://github.com/meyfa/writable-wrapper/issues/209)) ([e18f6f6](https://github.com/meyfa/writable-wrapper/commit/e18f6f6e512f5d2b350466a104a7490a040039f1))
+* Require Node.js 22.18.0 or later ([#207](https://github.com/meyfa/writable-wrapper/issues/207)) ([ec64938](https://github.com/meyfa/writable-wrapper/commit/ec649389e0f95c691e5acd2a4a874b7ab41d7487))
+
 ## [4.0.2](https://github.com/meyfa/writable-wrapper/compare/v4.0.1...v4.0.2) (2023-09-17)
 
 
